@@ -1,6 +1,6 @@
 import React from "react";
-import Loader from "react-loader-spinner";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import AddFriend from "./AddFriend";
 
 class Friends extends React.Component {
   state = {
@@ -13,7 +13,7 @@ class Friends extends React.Component {
 
   getData = () => {
     axiosWithAuth()
-      .get("http://localhost:5000/api/friends")
+      .get("/friends")
       .then(res => {
         console.log(res.data, "get response");
         this.setState({
@@ -25,13 +25,14 @@ class Friends extends React.Component {
   render() {
     return (
       <div className="friendsCont">
-        {this.state.friends.map((item, id) => (
-          <div key={item.id}>
-            <h2>Name: {item.name}</h2>
+        {this.state.friends.map(item => (
+          <div className="friendsDiv" key={item.id}>
+            <h2>{item.name} </h2>
             <h3>Age: {item.age}</h3>
             <h3>Email: {item.email}</h3>
           </div>
         ))}
+        <AddFriend />
       </div>
     );
   }
