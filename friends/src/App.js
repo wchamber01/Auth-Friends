@@ -11,17 +11,15 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <header className="App-header">
-          <nav>
-            <Link to="/login">Login</Link>
-            <Link to="/protected">Protected Page</Link>
-          </nav>
-          <Switch>
-            <PrivateRoute path="/protected" component={Friends} />
-            <Route path="/login" component={Login} />
-          </Switch>
-          <h1>My Friends App</h1>
-        </header>
+        <nav>
+          <Link to="/login">Login</Link>
+          <Link to="/protected">Protected Page</Link>
+        </nav>
+        <Switch>
+          <PrivateRoute path="/protected" component={Friends} />
+          <Route path="/login" component={Login} />
+        </Switch>
+        <h1>My Friends App</h1>
       </div>
     </Router>
   );
