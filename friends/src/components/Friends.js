@@ -1,5 +1,6 @@
 import React from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { Route } from "react-router-dom";
 import AddFriend from "./AddFriend";
 
 class Friends extends React.Component {
@@ -9,6 +10,9 @@ class Friends extends React.Component {
 
   componentDidMount() {
     this.getData();
+  }
+  componentDidUpdate() {
+    // this.getData();
   }
 
   getData = () => {
@@ -32,7 +36,8 @@ class Friends extends React.Component {
             <h3>Email: {item.email}</h3>
           </div>
         ))}
-        <AddFriend />
+        <AddFriend state={this.state} getData={this.getData} />
+        {/* <Route path="/protected" render={props => <AddFriend {...props} />} /> */}
       </div>
     );
   }

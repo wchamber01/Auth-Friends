@@ -9,7 +9,6 @@ import PrivateRoute from "./components/PrivateRoute";
 import Logout from "./components/Logout";
 
 function App() {
-  const refresh = window.location.reload; //how do I make the forced refresh work?
   return (
     <Router>
       <div className="App">
@@ -22,12 +21,13 @@ function App() {
             Protected Page
           </Link>
           <Link className="link" to="/login">
-            <Logout refresh={refresh} />
+            <Logout />
           </Link>
         </nav>
         <Switch>
           <PrivateRoute path="/protected" component={Friends} />
           <Route path="/login" component={Login} />
+          <Route component={Login} />
         </Switch>
       </div>
     </Router>
